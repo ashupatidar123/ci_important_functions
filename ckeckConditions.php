@@ -27,3 +27,25 @@ public function getFollowers_post()
         @$this->response($resp); exit;
     }
 }
+=============================================OR=====Error show same page===================================================
+    
+
+function check_required_value($chk_params,$converted_array)
+{
+    foreach ($chk_params as $param)
+    {
+        if(array_key_exists($param, $converted_array) && ($converted_array[$param] !='')){
+            $check_error = 0;
+        } 
+        else{
+            $check_error=array('error'=>1,'param'=>$param);
+            break;
+        }
+    }
+    
+    if($check_error['error']>0){
+    	$resp = array('code'=>'501','message'=>'Missing '.ucwords($check_error['param']));
+	    print_r(json_encode(($resp))); dd();
+    }
+}    
+    
