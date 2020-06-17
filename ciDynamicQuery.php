@@ -170,3 +170,16 @@ public function countRecordLike($tbl,$where=NULL,$andLike=NULL,$orLike=NULL,$gro
 	$cnt = $query->row_array();
 	return $cnt['total'];
 }
+
+
+
+====================Custom Query=========
+public function getBuyPost($where)
+{
+	$query ="SELECT ap.*,u.userid,u.handle FROM qa_adimvipre ap JOIN qa_users u ON ap.buyer=u.userid $where";
+	return $this->CI->db->query($query)->result_array();                 
+}	
+	
+	
+	
+	
