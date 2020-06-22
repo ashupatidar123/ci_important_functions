@@ -179,7 +179,15 @@ public function getBuyPost($where)
 	$query ="SELECT ap.*,u.userid,u.handle FROM qa_adimvipre ap JOIN qa_users u ON ap.buyer=u.userid $where";
 	return $this->CI->db->query($query)->result_array();                 
 }	
-	
-	
+
+$where = array('userEmail'=>$userEmail, 'userId!='=>$userId);
+
+public function customCount($tbl,$where=''){
+	$qry = "SELECT count(*) as total FROM $tbl $where";
+	//echo $qry; die();
+	$query = $this->db->query($qry);
+	$cnt = $query->row_array();
+	return $cnt['total'];
+}
 	
 	
