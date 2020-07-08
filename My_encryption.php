@@ -24,3 +24,31 @@ class My_encryption{
 		return base64_decode($id);	
 	}
 }
+
+
+============================SS tech code==============
+function encoding($str){
+      $one = serialize($str);
+      $two = @gzcompress($one,9);
+      $three = addslashes($two);
+      $four = base64_encode($three);
+      $five = strtr($four, '+/=', '-_.');
+      return $five;
+  }
+
+function decoding($str,$url=''){
+    $one = strtr($str, '-_.', '+/=');
+      $two = base64_decode($one);
+      $three = stripslashes($two);
+      $four = @gzuncompress($three);
+      if ($four == '') {
+	      if($url!=''){
+		  redirect(base_url($url));
+	      }else{
+		  redirect(base_url());    
+	      }
+      } else {
+          $five = unserialize($four);
+          return $five;
+      }
+  }
