@@ -1,0 +1,7 @@
+<?php 
+  $shop_youtube_url = $products[0]->shop_youtube_url;
+  $expld=explode('v=', $shop_youtube_url);
+  $rem_expld =explode('&',$expld[1]);
+  $ytb_link = $rem_expld[0];
+?>
+<iframe src="//www.youtube.com/embed/<?=$ytb_link?>?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
